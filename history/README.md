@@ -1,65 +1,29 @@
-# LMO Rückrunde
+# Historie
 
-Addon, um für eine erstellte Liga nach der Festsetzung der Paarungen der Hinrunde die Rückrunde automatisiert aufzufüllen, basierend auf den Paarungen der Hinrunde.
-
-### Installation
-
-`lmo-rueckrunde.php` in das Hauptverzeichnis des LMOs legen
-
-`lmo-adminedit.php` an 2 Positionen bearbeiten:
-```php
-    require(PATH_TO_LMO."/lmo-savefile.php");
-    $st = $stz;
-  }
-  
-  // Rückrunden-Hack
-  if($save == 990) require_once("lmo-rueckrunde.php");
-```
-```php
-	<form  name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	  <input type="hidden" name="action" value="admin">
-	  <input type="hidden" name="todo" value="edit">
-	  <input type="hidden" name="save" value="990">
-	  <input type="hidden" name="file" value="<?php echo $file; ?>">
-	  <input type="hidden" name="st" value="<?php echo $st; ?>">
-	  <input type="submit" name="rueckrundeButton" class="btn btn-primary btn-sm" value="<?php echo $text[3000]; ?>">
-```
-`lang-Deutsch.txt` ergänzen:
-```
-3000=Rückrundenspielplan erstellen
-3001=Die Liga hat eine ungerade Anzahl an Spieltagen. Es konnte keine Hin- & Rückrunde identifiziert werden.
-3002=Der Rückrundenspielplan wurde erfolgreich gespeichert.
-```
-
-# LMO second half
-
-Add-on to automatically populate the second half of the season for a created league after the fixtures for the first half have been determined, based on the fixtures of the first half.
+AddOn, um über mehrere Ligen eine Ewige Tabelle zu erstellen
 
 ### Installation
 
-Place `lmo-rueckrunde.php` in the root directory of the LMO
+Dateien in den Verzeichnissen auf den LMO kopieren
+In der Administration des LMOs unter `Optionen` `Addons` `history` die notwendigen Angaben machen, um die csv-Dateien zu erstellen
+Aufrufen des Scripts mit `iFrame` oder `include()`. Es kann der komplette Archivordner verwendet werden oder konkrete Ligen, die in die Auswertung einfliessen.
 
-Edit `lmo-adminedit.php`at 2 positions:
+```html
+<iframe src="<url_to_lmo>/addon/history/lmo-history.php?his_liga=xyz.l98&his_folder=archiv/bundesliga</iframe>
+<iframe src="<url_to_lmo>/addon/history/lmo-history.php?his_liga=xyz.l98&his_ligen=1bundesliga2003.l98,1bundesliga2002.l98,1bundesliga2001.l98,1bundesliga2000.l98"></iframe>
+```
+
 ```php
-    require(PATH_TO_LMO."/lmo-savefile.php");
-    $st = $stz;
-  }
-  
-  // Rückrunden-Hack
-  if($save == 990) require_once("lmo-rueckrunde.php");
+require_once(BASEDIR."lmo/init.php");
+$his_liga = "xyz.l98";
+$his_folder = "archiv/bundesliga";
+include (PATH_TO_ADDONDIR."/history/lmo-history.php");
+```
+Optional kann noch das zu nutzende Template mitgegeben werden
+```html
+his_template=mytemplate
 ```
 ```php
-	<form  name="lmoedit" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-	  <input type="hidden" name="action" value="admin">
-	  <input type="hidden" name="todo" value="edit">
-	  <input type="hidden" name="save" value="990">
-	  <input type="hidden" name="file" value="<?php echo $file; ?>">
-	  <input type="hidden" name="st" value="<?php echo $st; ?>">
-	  <input type="submit" name="rueckrundeButton" class="btn btn-primary btn-sm" value="<?php echo $text[3000]; ?>">
+$his_template='mytemplate'
 ```
-edit `lang-English.txt`:
-```
-3000=set second half
-3001=The league as an odd number of matchdays. The start of second half couldn't be identifies
-3002=Second half successfull created
-```
+
