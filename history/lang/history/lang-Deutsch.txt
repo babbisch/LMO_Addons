@@ -1,0 +1,11 @@
+﻿000=[<acronym title='lmo-history for LMO &copy; Marcus Schug'>&copy;</acronym>]
+001=Ewige Tabelle
+002=aufgestiegen
+003=abgestiegen
+005=Fehler: Liga nicht gefunden!
+006=<acronym title='Punkte pro Spiel'>&#216;</acronym>
+007=<acronym title='Anzahl der Meisterschaften'>M</acronym>
+008=<acronym title='Anzahl der Abstiege'>A</acronym>
+009=<acronym title='Anzahl der Spielzeiten'>S</acronym>
+010=aufgestiegen über Gruppenspiele
+﻿011=[<acronym title='lmo-history for LMO &copy; Marcus Schug'>&copy;</acronym>]
