@@ -1,17 +1,18 @@
-# LMO Rückrunde
+# LMO RÃ¼ckrunde
 
-Addon, um für eine erstellte Liga nach der Festsetzung der Paarungen der Hinrunde die Rückrunde automatisiert aufzufüllen, basierend auf den Paarungen der Hinrunde.
+Addon, um fÃ¼r eine erstellte Liga nach der Festsetzung der Paarungen der Hinrunde die RÃ¼ckrunde automatisiert aufzufÃ¼llen, basierend auf den Paarungen der Hinrunde.
 
 ### Installation
 
 `lmo-rueckrunde.php` in das Hauptverzeichnis des LMOs legen
-`lmo-adminedit.php`an 2 Positionen bearbeiten:
+
+`lmo-adminedit.php` an 2 Positionen bearbeiten:
 ```php
     require(PATH_TO_LMO."/lmo-savefile.php");
     $st = $stz;
   }
   
-  // Rückrunden-Hack
+  // RÃ¼ckrunden-Hack
   if($save == 990) require_once("lmo-rueckrunde.php");
 ```
 ```php
@@ -23,11 +24,11 @@ Addon, um für eine erstellte Liga nach der Festsetzung der Paarungen der Hinrund
 	  <input type="hidden" name="st" value="<?php echo $st; ?>">
 	  <input type="submit" name="rueckrundeButton" class="btn btn-primary btn-sm" value="<?php echo $text[3000]; ?>">
 ```
-`lang-Deutsch.txt` ergänzen:
+`lang-Deutsch.txt` ergÃ¤nzen:
 ```
-3000=Rückrundenspielplan erstellen
-3001=Die Liga hat eine ungerade Anzahl an Spieltagen. Es konnte keine Hin- & Rückrunde identifiziert werden.
-3002=Der Rückrundenspielplan wurde erfolgreich gespeichert.
+3000=RÃ¼ckrundenspielplan erstellen
+3001=Die Liga hat eine ungerade Anzahl an Spieltagen. Es konnte keine Hin- & RÃ¼ckrunde identifiziert werden.
+3002=Der RÃ¼ckrundenspielplan wurde erfolgreich gespeichert.
 ```
 
 # LMO second half
@@ -37,13 +38,14 @@ Add-on to automatically populate the second half of the season for a created lea
 ### Installation
 
 Place `lmo-rueckrunde.php` in the root directory of the LMO
-edit `lmo-adminedit.php`at 2 positions:
+
+Edit `lmo-adminedit.php`at 2 positions:
 ```php
     require(PATH_TO_LMO."/lmo-savefile.php");
     $st = $stz;
   }
   
-  // Rückrunden-Hack
+  // RÃ¼ckrunden-Hack
   if($save == 990) require_once("lmo-rueckrunde.php");
 ```
 ```php
