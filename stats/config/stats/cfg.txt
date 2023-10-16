@@ -1,0 +1,2 @@
+popup_hoehe=600
+popup_breite=770
