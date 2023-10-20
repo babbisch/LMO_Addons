@@ -2,4 +2,12 @@
 
 Sammlung von Addons des LMOs, angepasst an PHP 8 und responsive Design
 
-Collection of several add-ons for the LMO, based on PHP 8 and responsive design
+#### rueckrunde
+ erstellt die Rückrunde, basierend auf den Paarngen der Hinrunde, automnatisch
+
+#### history
+Ewige Tabelle
+
+#### stats
+Vergleich aller  Paarungen zwischen zwei Teams
+
