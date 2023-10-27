@@ -11,3 +11,5 @@ Ewige Tabelle
 #### stats
 Vergleich aller  Paarungen zwischen zwei Teams
 
+#### koresults
+KO-Spiele Best of 5 / BEst of 7 jeweils mit 2 Heimspielen, 2 Auswärtsspielen beginnend in der Ergebnisansicht
