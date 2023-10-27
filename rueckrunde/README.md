@@ -60,6 +60,6 @@ Edit `lmo-adminedit.php`at 2 positions:
 edit `lang-English.txt`:
 ```
 3000=set second half
-3001=The league as an odd number of matchdays. The start of second half couldn't be identifies
+3001=The league has an odd number of matchdays. The start of second half couldn't be identified
 3002=Second half successfull created
 ```
