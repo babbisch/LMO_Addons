@@ -1,4 +1,4 @@
-# LMO_Addons
+# LMO Addons
 
 Sammlung von Addons des LMOs, angepasst an PHP 8 und responsive Design
 
