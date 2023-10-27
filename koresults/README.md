@@ -1,0 +1,10 @@
+# KO-Results
+
+Hack, der in KO-Spielen die Spiele für jede Partie anzeigt.
+Dabei wird bei Best of 5 und Best of 7 berücksichtigt, dass zunächst 2 Heimspiele und 2 Auswärtsspiele stattinden.
+Die nachfolgenden Paarungen werden dann abwechselns angezeigt.
+
+### Installation
+
+Datei überschreiben
+
