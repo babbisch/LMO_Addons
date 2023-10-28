@@ -4,8 +4,10 @@ AddOn, um über mehrere Ligen eine Ewige Tabelle zu erstellen
 
 ### Installation
 
-Dateien in den Verzeichnissen auf den LMO kopieren
-In der Administration des LMOs unter `Optionen` `Addons` `history` die notwendigen Angaben machen, um die csv-Dateien zu erstellen
+Dateien in den Verzeichnissen auf den LMO kopieren.
+
+In der Administration des LMOs unter `Optionen` `Addons` `history` die notwendigen Angaben machen, um die csv-Dateien zu erstellen.
+
 Aufrufen des Scripts mit `iFrame` oder `include()`. Es kann der komplette Archivordner verwendet werden oder konkrete Ligen, die in die Auswertung einfliessen.
 
 #### HTML
