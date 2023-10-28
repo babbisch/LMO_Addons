@@ -158,14 +158,14 @@ function showTeam($sidel, $sider, $c) {
            default:
               $rm = 0;
         }
-        if ($modus[$st-1] <= 3) {
+        if ($modus[$st-1] < 4 || $playoffmode == 0) {
            if($n % 2 == 0) {
               echo showTeam("a", "b", $m);
            } else {
               echo showTeam("b", "a", $rm);
            }
         }
-        if ($modus[$st-1] > 3) {
+        if (($modus[$st-1] == 5 || $modus[$st-1] == 7) && $playoffmode == 1) {
            if (($n < 2) || ($n > 3 && $n % 2 == 0)) {
               echo showTeam("a", "b", $m);
            } else {
