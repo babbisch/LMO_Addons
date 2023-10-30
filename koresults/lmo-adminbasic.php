@@ -73,6 +73,7 @@ if($file!=""){
           }else{
             $klfin=isset($_POST["xklfin"])?1:0;
             $playdown=isset($_POST["xplaydown"])?1:0;
+            $playoffmode=isset($_POST["xplayoffmode"])?$_POST["xplayoffmode"]:0;
           }
 
           $urlt=isset($_POST["xurlt"])?1:0;
