@@ -13,3 +13,6 @@ Vergleich aller  Paarungen zwischen zwei Teams
 
 #### koresults
 KO-Spiele Best of 5 / Best of 7 jeweils mit 2 Heimspielen, 2 Auswärtsspielen beginnend in der Ergebnisansicht
+
+#### verify
+Mailadresse im Addon Tippspiel bestätigen
