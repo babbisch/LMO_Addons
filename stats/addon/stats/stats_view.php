@@ -45,16 +45,16 @@
   $tabstat .= "<div class='col-1'><b>" . $text['stats'][37] . "</b></div>\n";
   $tabstat .= "</div>\n";
   
-  $spielstat = "";
-  $spielstat .= "<div class='container'>\n";
-  $spielstat .= "<div class='row bg-dark shadow mb-3 mt-5'>\n";
-  $spielstat .= "<div class='col text-light'><h5>" . $text['stats'][50] . " " . $a . "</h5></div>\n";
-  $spielstat .= "</div>\n";
-  $spielstat .= "<div class='row'>\n";
-  $spielstat .= "<div class='col-2 text-start'><b>" . $text['stats'][51] . "</b></div>\n";
-  $spielstat .= "<div class='col-3'><b>" . $text['stats'][52] . "</b></div>\n";
-  $spielstat .= "<div class='col-3'><b>" . $text['stats'][53] . "</b></div>\n";
-  $spielstat .= "</div>\n";
+  $spielastat = "";
+  $spielastat .= "<div class='container'>\n";
+  $spielastat .= "<div class='row bg-dark shadow mb-3 mt-5'>\n";
+  $spielastat .= "<div class='col text-light'><h5>" . $text['stats'][50] . " " . $a . "</h5></div>\n";
+  $spielastat .= "</div>\n";
+  $spielastat .= "<div class='row'>\n";
+  $spielastat .= "<div class='col-2 text-start'><b>" . $text['stats'][51] . "</b></div>\n";
+  $spielastat .= "<div class='col-3'><b>" . $text['stats'][52] . "</b></div>\n";
+  $spielastat .= "<div class='col-3'><b>" . $text['stats'][53] . "</b></div>\n";
+  $spielastat .= "</div>\n";
   
   $spielbstat = "";
   $spielbstat .= "<div class='container'>\n";
@@ -119,22 +119,22 @@
                       $akt_spieltag = $akt_liga->spieltagForNumber($spieltag);
                       foreach ($akt_spieltag->partien as $yPartie) {
                           if (($yPartie->heim->name == $a) or ($yPartie->gast->name == $a)) {
-                              $Datum = $yPartie->datumString($leer = '__.__.____');
-                              $Heim = $yPartie->heim->name;
-                              $Gast = $yPartie->gast->name;
-                              $Tore = ($yPartie->hToreString() . " : " . $yPartie->gToreString());
+                              $Datuma = $yPartie->datumString($leer = '__.__.____');
+                              $Heima = $yPartie->heim->name;
+                              $Gasta = $yPartie->gast->name;
+                              $Torea = ($yPartie->hToreString() . " : " . $yPartie->gToreString());
                               if ($Heim == $a) {
-                                  $spielstat .= "<div class='row' id='1'>\n";
-                                  $spielstat .= "<div class='col-2 text-start'>" . $Datum . "</div>\n";
-                                  $spielstat .= "<div class='col-3'>" . $Gast .  " " . $text['stats'][27] . "</strong></div>\n";
-                                  $spielstat .= "<div class='col-1'>" . $Tore . "</div>\n";
-                                  $spielstat .= "</div>\n";
+                                  $spielastat .= "<div class='row' id='1'>\n";
+                                  $spielastat .= "<div class='col-2 text-start'>" . $Datuma . "</div>\n";
+                                  $spielastat .= "<div class='col-3'>" . $Gasta .  " " . $text['stats'][27] . "</strong></div>\n";
+                                  $spielastat .= "<div class='col-1'>" . $Torea . "</div>\n";
+                                  $spielastat .= "</div>\n";
                               } elseif ($Gast == $a) {
-                                  $spielstat .= "<div class='row'>\n";
-                                  $spielstat .= "<div class='col-2 text-start'>" . $Datum . "</div>\n";
-                                  $spielstat .= "<div class='col-3'>" . $Heim . " " . $text['stats'][28] . "</div>\n";
-                                  $spielstat .= "<div class='col-1'>" . $Tore . "</div>\n";
-                                  $spielstat .= "</div>\n";
+                                  $spielastat .= "<div class='row'>\n";
+                                  $spielastat .= "<div class='col-2 text-start'>" . $Datuma . "</div>\n";
+                                  $spielastat .= "<div class='col-3'>" . $Heima . " " . $text['stats'][28] . "</div>\n";
+                                  $spielastat .= "<div class='col-1'>" . $Torea . "</div>\n";
+                                  $spielastat .= "</div>\n";
                               }
                           }
                           if (($yPartie->heim->name == $b) or ($yPartie->gast->name == $b)) {
@@ -160,12 +160,12 @@
                   }
               }
           }
-          $spielstat .= "</div>\n";
+          $spielastat .= "</div>\n";
           $spielbstat .= "</div>\n";
           $tabstat .= "</div>\n";
       }
   }
-  $template->setVariable("Spiela", $spielstat);
+  $template->setVariable("Spiela", $spielastat);
   $template->setVariable("Spielb", $spielbstat);
   $template->setVariable("Tabelle", $tabstat);
   for ($i = 1; $i <= $anzahl_ligen; $i++) {
@@ -175,7 +175,6 @@
           echo "<font color=\"red\">" . $text['stats'][12] . " ($fav_liga[$i])</font>";
       } else {
           $template->setCurrentBlock("Liga");
-          
           $template->setVariable("Teama", $a);
           $template->setVariable("Teamb", $b);
           $template->setCurrentBlock("Inhalt");
@@ -234,7 +233,7 @@
                       $template->setVariable("GastKurz", $yPartie->gast->kurz);
                       $template->setVariable("IconGast", HTML_smallTeamIcon($yPartie->gast->name, "alt='$b' width='24'"));
                       $template->setVariable("Tore", $yPartie->hToreString() . " : " . $yPartie->gToreString());
-		      $template->setVariable("SpielEnde",$yPartie->spielEndeString($text));
+					  $template->setVariable("SpielEnde",$yPartie->spielEndeString($text));
                       $SpBer_link = $yPartie->reportUrl;
                       $tlink = "&nbsp;";
                       if ($SpBer_link != "")
@@ -270,10 +269,9 @@
           $aspiele = $asieg + $aunentschieden + $aniederlage;
           $aspieleh = $asiegh + $aunentschiedenh + $aniederlageh;
           $aspielea = $asiega + $aunentschiedena + $aniederlagea;
+          $stringTor = $akt_liga->options->keyValues['nameTor'];
           
-          $teamstat = "";
-          $teamstat_short = "";
-          $teamstat_long = "";
+          $teamstat = $teamstat_short = $teamstat_long = "";
           $teamstat .= "<div class='container'>\n";
           $teamstat .= "<div class='row bg-dark shadow mb-3 mt-5'>\n";
           $teamstat .= "<div class='col text-light'><h5>" . $text['stats'][20] . "</h5></div>\n";
@@ -284,7 +282,7 @@
           $teamstat .= "<div class='col-1'><b>" . $text['stats'][23] . "</b></div>\n";
           $teamstat .= "<div class='col-1'><b>" . $text['stats'][24] . "</b></div>\n";
           $teamstat .= "<div class='col-1'><b>" . $text['stats'][25] . "</b></div>\n";
-          $teamstat .= "<div class='col-2'><b>" . $text['stats'][26] . "</b></div>\n";
+          $teamstat .= "<div class='col-2'><b>" . $stringTor . "</b></div>\n";
           $teamstat .= "</div>\n";
           $teamstat .= "<div class='row'>\n";
           $teamstat .= "<div class='col-5'>" . $a . "</div>\n";
