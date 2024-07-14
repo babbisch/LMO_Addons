@@ -100,7 +100,7 @@ $m_template	=   isset($his_template)?   $his_template:  $m_template;
 $m_sort		=   isset($his_sort)	?   $his_sort:      $m_sort; 
 $archivFolder = isset($_GET['his_folder'])?$_GET['his_folder']:(isset($his_folder)?$his_folder:basename($ArchivDir));// Default
 
-if (basename($_SERVER['PHP_SELF'])=="lmo-history_new.php") {?>
+if (basename($_SERVER['PHP_SELF'])=="lmo-history.php") {?>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 					"http://www.w3.org/TR/html4/loose.dtd">
 <html>
