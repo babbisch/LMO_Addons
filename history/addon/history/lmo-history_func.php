@@ -362,7 +362,7 @@ function scan_folder($folder){
 function FtpMkdir($path){
   global $cfgarray;
   global $diroutput;
-  $connection = ssh2_connect('babig.info'); // connection
+  $connection = ssh2_connect($cfgarray['history']['lmo_ftpserver']); // connection
   if (!$connection) die('Connection failed');
   $result = ftp_login($connection, $cfgarray['history']['lmo_ftpuser'], $cfgarray['history']['lmo_ftppass']);
   // check if connection was made
