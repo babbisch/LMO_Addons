@@ -1,5 +1,5 @@
 <?php
-require(dirname(__FILE__).'/../../init.php');
+require(__DIR__.'/../../init.php');
 require_once(PATH_TO_ADDONDIR."/stats/ini.php");
 require_once(PATH_TO_ADDONDIR."/classlib/classes.php");
 

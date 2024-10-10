@@ -21,8 +21,8 @@
    */
   //error_reporting(E_ALL);
   //set_time_limit(1800);
-  require_once(dirname(__FILE__) . '/../../init.php');
-  require_once(PATH_TO_ADDONDIR . "/stats/ini.php");
+  require_once(__DIR__.'/../../init.php');
+  require_once(PATH_TO_ADDONDIR."/stats/ini.php");
   //include (PATH_TO_ADDONDIR.'/classlib/classes/pdf/class.ezpdf.php');
   
   if (!isset($cfgarray))
