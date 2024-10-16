@@ -17,8 +17,6 @@
   *
   */
 
-
-
 require_once(PATH_TO_LMO."/lmo-admintest.php");
 if($file!=""){
   require_once(PATH_TO_LMO."/lmo-openfile.php");
