@@ -288,7 +288,7 @@ if ($file != '') {
                 <option value="5"<?php if ($ligastats == '0') { echo ' disabled'; } elseif ($onrun == 5) { echo ' selected'; } ?>><?php echo $text[18] ?></option>
                 <option value="6"<?php if ($dats == '0') { echo ' disabled'; } elseif ($onrun == 6) { echo ' selected'; } ?>><?php echo $text[140] ?></option>
                 <option value="7"<?php if ($mittore == '0') { echo ' disabled'; } elseif ($onrun == 7) { echo ' selected'; } ?>><?php echo $text[485] ?></option>
-				<option value="8"<?php if ($stats == '0') { echo ' disabled'; } elseif ($onrun == 8) { echo ' selected'; } ?>><?php echo $text['stats'][0] ?></option>
+		<option value="8"<?php if ($stats == '0') { echo ' disabled'; } elseif ($onrun == 8) { echo ' selected'; } ?>><?php echo $text['stats'][0] ?></option>
               </select>
             </div>
           </div><?php } ?>
@@ -330,7 +330,7 @@ if ($file != '') {
             <div class="col-5 text-end"><acronym title="<?php echo $text[511]; ?>"><?php echo $text[12]; ?></acronym></div>
             <div class="col-1 text-start"><input type="checkbox" class="form-check-input" name="xplan" onChange="dolmoedit()"<?php if ($plan == 1) { echo ' checked'; } ?>></div>
           </div>
-		  <div class="row pb-1">
+	  <div class="row pb-1">
             <div class="col-5 text-end"><?php echo $text['stats'][0]; ?></div>
             <div class="col-5 text-start"><input type="checkbox" class="form-check-input" name="xstats" onChange="dolmoedit()"<?php if ($stats == 1) { echo ' checked'; } ?>></div>
           </div><?php if ($lmtype == 0) { ?>
