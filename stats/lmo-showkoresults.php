@@ -179,7 +179,7 @@ if ($file != '') {
                     }
                 }
                 /** Stats Addon */
-                include (PATH_TO_ADDONDIR . '/stats/lmo-showkoresults.inc.php');
+                include (PATH_TO_ADDONDIR . '/stats/lmo-showresults.inc.php');
                 /** Notizen anzeigen */
                 if ($mnote[$st - 1][$i][$n] != '') {
                     // Allgemeine Notiz
