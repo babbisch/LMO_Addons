@@ -171,7 +171,7 @@ $template->setVariable('Spielb', $spielbstat);
 $template->setVariable('Tabelle', $tabstat);
 $template->setVariable('Team', $text['stats'][0]);
 $template->setVariable('highHomew', $text['stats'][35]);
-$template->setVariable('highAway', $text['stats'][36);
+$template->setVariable('highAway', $text['stats'][36]);
 for ($i = 1; $i <= $anzahl_ligen; $i++) {
     $akt_liga = new liga();
     if (($akt_liga->loadFile(PATH_TO_LMO . '/' . $dirliga . $fav_liga[$i]) == FALSE) && ($i > 1)) {
