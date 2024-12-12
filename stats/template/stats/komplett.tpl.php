@@ -1,6 +1,6 @@
 <html>
 <head>
-<title><!--Teama--> vs. <!--Teamb--></title>
+<title><!--TeamA--> vs. <!--TeamB--></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=0.5,user-scalable=yes" />
 <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
@@ -15,26 +15,11 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-3 text-end"><!--Teama--></div>
+    <div class="col-3 text-end"><!--TeamA--></div>
     <div class="col-2 text-center"><!--Iconhbig--></div>
     <div class="col-1 text-center"><!--Text2--></div>
     <div class="col-2 text-center"><!--Icongbig--></div>
-    <div class="col-3 text-start"><!--Teamb--></div>
-  </div>
-  <div class="row">
-    <div class="col"><!--Team--></div>
-	<div class="col"><!--highHome--></div>
-	<div class="col"><!--highAway--></div>
-  </div>
-  <div class="row">
-    <div class="col"><!--Teamb--></div>
-	<div class="col"><!--HeimsiegB--></div>
-	<div class="col"><!--GastsiegB--></div>	
-  </div>
-  <div class="row">
-    <div class="col"><!--Teamb--></div>
-	<div class="col"><!--HeimsiegB--></div>
-	<div class="col"><!--GastsiegB--></div>
+    <div class="col-3 text-start"><!--TeamB--></div>
   </div>
   <!-- BEGIN Liga -->
   <div class="row mb-2 mt-5">
@@ -55,6 +40,23 @@
   <!-- END Liga -->
 </div>
 <!--StatistikShort-->
+<div class="container p-3">
+  <div class="row">
+    <div class="col"></div>
+	<div class="col"><strong><!--highHome--></strong></div>
+	<div class="col"><strong><!--highAway--></strong></div>
+  </div>
+  <div class="row">
+    <div class="col"><!--TeamA--></div>
+	<div class="col"><!--HeimsiegA--></div>
+	<div class="col"><!--GastsiegA--></div>	
+  </div>
+  <div class="row">
+    <div class="col"><!--TeamB--></div>
+	<div class="col"><!--HeimsiegB--></div>
+	<div class="col"><!--GastsiegB--></div>
+  </div>
+</div>
 <br/>
 <!--Spiela-->
 <br/>
