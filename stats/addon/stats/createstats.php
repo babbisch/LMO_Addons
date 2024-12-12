@@ -30,7 +30,7 @@ while (false !== ($entry = $dir->read())) {
         $verzarch .= '<option>' . 'archiv/' . $entry . '</option>';
 }
 
-// Ligenverzeichnis
+// Ligenarchiv
 $dir = PATH_TO_LMO . '/' . $dirliga;
 $scanned = array_diff(scandir($dir), array('..', '.'));
 $verz = '';
@@ -51,7 +51,7 @@ foreach ($scanned as $scan) {
     $pathinfo = pathinfo($scan);
     if ($pathinfo['extension'] == 'php') {
         $template = substr($pathinfo['filename'], 0, stripos($pathinfo['filename'], '.'));
-        $options .= '<option>' . $template . '</option>';
+        $templates .= '<option>' . $template . '</option>';
     }
 }
 
@@ -69,11 +69,11 @@ if ($createstats == false) {
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][202]; ?>:</div>
-        <div class="col-3 text-start"><select class="custom-select" style="width: 15rem;" name="liganame"><?php echo $verz ?></select></div>
+        <div class="col-3 text-start"><select class="custom-select" style="width: 8rem;" name="liganame"><?php echo $verz ?></select></div>
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][203]; ?>:</div>
-        <div class="col-3 text-start"><select class="custom-select" style="width: 15rem;" name="archiv"><?php echo $verzarch ?></select></div>
+        <div class="col-3 text-start"><select class="custom-select" style="width: 8rem;" name="archiv"><?php echo $verzarch ?></select></div>
     </div>
     <div class="row">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][204]; ?>:</div>
@@ -87,7 +87,7 @@ if ($createstats == false) {
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][208]; ?>:</div>
-        <div class="col-3 text-start"><select class="custom-select" style="width: 15rem;" name="template"><?php echo $options ?></select></div>
+        <div class="col-3 text-start"><select class="custom-select" style="width: 5rem;" name="template"><?php echo $templates ?></select></div>
     </div>
     <div class="row pt-3">
         <div class="col">
@@ -95,23 +95,18 @@ if ($createstats == false) {
             <input type="submit" class="btn btn-primary btn-sm" value="<?php echo $text['stats'][209]; ?>">
         </div>
     </div>
-    <div class="row">
-        <div class="col">&nbsp;</div>
-    </div>
 </div>
 </form>
 <?php
-}
-if ($createstats == true) {
+} else {
     $archiv = htmlspecialchars($_POST['archiv']);
     $liganame = htmlspecialchars($_POST['liganame']);
     $i = 1;
 
     $stats = fopen(PATH_TO_CONFIGDIR . '/stats/' . $liganame . '.stats', 'wb');
     fputs($stats, "[config]\r\n");
-    fputs($stats, 'modus=' . htmlspecialchars($_POST['modus']) . "\r\n");
+    fputs($stats, "modus=1\r\n");
     fputs($stats, 'template=' . htmlspecialchars($_POST['template']) . "\r\n");
-    fputs($stats, "spielberichte_verlinken=1\r\n");
     fputs($stats, "\r\n");
     fputs($stats, "[Viewer Ligen]\r\n");
     fputs($stats, 'liga' . $i . '=' . $liganame . ".l98\r\n");
