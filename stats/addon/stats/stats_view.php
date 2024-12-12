@@ -29,6 +29,14 @@ $amtorea = 0;
 $Spielm = '';
 $Spielp = '';
 $tordummy = '';
+$highwina = 1;
+$highwinagoal = 0;
+$highwinb = 1;
+$highwinbgoal = 0;
+$highawina = 1;
+$highawinagoal = 0;
+$highawinb = 1;
+$highawinbgoal = 0;
 
 $tabstat = '';
 $tabstat .= "<div class='container'>\n";
@@ -201,31 +209,31 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                 $template->setVariable('Tore', $yPartie->hToreString() . ' : ' . $yPartie->gToreString());
                 $template->setVariable('SpielEnde', $yPartie->spielEndeString($text));
                 $SpBer_link = $yPartie->reportUrl;
-				// Höchste Siege Heimmannschaft Hinspiel (Team a)
-				$windiffa = ((int)$yPartie->hToreString() - (int)$yPartie->gToreString());
-				if ($windiffa > $highwina) {
-					$highwina = $windiffa;
-					$template->setVariable("HeimsiegA",$yPartie->hToreString().":".$yPartie->gToreString());
-					$highwinagoal = $yPartie->hToreString();
-				}	elseif ($windiffa == $highwina) {
-					if ($highwinagoal < $yPartie->hToreString()) {
-						$template->setVariable("HeimsiegA",$yPartie->hToreString().":".$yPartie->gToreString());
-						$highwinagoal = $yPartie->hToreString();
-					}
-				}
-				// Höchste Siege Gastmannschaft Hinspiel (Team b)
-				$winadiffb = ((int)$yPartie->gToreString() - (int)$yPartie->hToreString());
-				if ($winadiffb > $highawinb) {
-					$highawinb = $winadiffb;
-					$template->setVariable("GastsiegB",$yPartie->gToreString().":".$yPartie->hToreString());
-					$highawinbgoal = $yPartie->gToreString();
-				} elseif ($winadiffb == $highawinb) {
-					if ($highawinbgoal < $yPartie->gToreString()) {
-						$template->setVariable("GastsiegB",$yPartie->gToreString().":".$yPartie->hToreString());
-						$highawinbgoal = $yPartie->gToreString();
-					}
-				}
-				// Ende H?chste Siege Gastmannschaft Hinspiel
+                // HÃ¶chste Siege Heimmannschaft Hinspiel (Team a)
+                $windiffa = ((int) $yPartie->hToreString() - (int) $yPartie->gToreString());
+                if ($windiffa > $highwina) {
+                    $highwina = $windiffa;
+                    $template->setVariable('HeimsiegA', $yPartie->hToreString() . ':' . $yPartie->gToreString());
+                    $highwinagoal = $yPartie->hToreString();
+                } elseif ($windiffa == $highwina) {
+                    if ($highwinagoal < $yPartie->hToreString()) {
+                        $template->setVariable('HeimsiegA', $yPartie->hToreString() . ':' . $yPartie->gToreString());
+                        $highwinagoal = $yPartie->hToreString();
+                    }
+                }
+                // HÃ¶chste Siege Gastmannschaft Hinspiel (Team b)
+                $winadiffb = ((int) $yPartie->gToreString() - (int) $yPartie->hToreString());
+                if ($winadiffb > $highawinb) {
+                    $highawinb = $winadiffb;
+                    $template->setVariable('GastsiegB', $yPartie->gToreString() . ':' . $yPartie->hToreString());
+                    $highawinbgoal = $yPartie->gToreString();
+                } elseif ($winadiffb == $highawinb) {
+                    if ($highawinbgoal < $yPartie->gToreString()) {
+                        $template->setVariable('GastsiegB', $yPartie->gToreString() . ':' . $yPartie->hToreString());
+                        $highawinbgoal = $yPartie->gToreString();
+                    }
+                }
+                // Ende H?chste Siege Gastmannschaft Hinspiel
                 $tlink = '&nbsp;';
                 if ($SpBer_link != '')
                     $tlink = "<a href='" . URL_TO_LMO_SHORT . $SpBer_link . "' target='_blank' title='" . $text['stats'][10] . ' (' . $text['stats'][11] . ")'><i class='material-icons text-danger'>launch</i></i></a>";
@@ -264,30 +272,30 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                     $template->setVariable('Tore', $yPartie->hToreString() . ' : ' . $yPartie->gToreString());
                     $template->setVariable('SpielEnde', $yPartie->spielEndeString($text));
                     $SpBer_link = $yPartie->reportUrl;
-					// Höchste Siege Gastmannschaft R?ckspiel (Team a)
-					$winadiffa = ((int)$yPartie->gToreString() - (int)$yPartie->hToreString());
-					if ($winadiffa > $highawina) {
-						$highawina = $winadiffa;
-						$template->setVariable("GastsiegA",$yPartie->gToreString().":".$yPartie->hToreString());
-						$highawinagoal = $yPartie->gToreString();
-					} elseif ($winadiffa == $highawina) {
-						if ($highawinagoal < $yPartie->gToreString()) {
-							$template->setVariable("GastsiegA",$yPartie->gToreString().":".$yPartie->hToreString());
-							$highawinagoal = $yPartie->gToreString();
-						}
-					}
-					// Höchste Siege Heimmannschaft R?ckspiel (Team b)
-					$windiffb = ((int)$yPartie->hToreString() - (int)$yPartie->gToreString());
-					if ($windiffb > $highwinb) {
-						$highwinb = $windiffb;
-						$template->setVariable("HeimsiegB",$yPartie->hToreString().":".$yPartie->gToreString());
-						$highwinbgoal = $yPartie->hToreString();
-					} elseif ($windiffb == $highwinb) {
-						if ($highwinbgoal < $yPartie->hToreString()) {
-							$template->setVariable("HeimsiegB",$yPartie->hToreString().":".$yPartie->gToreString());
-							$highwinbgoal = $yPartie->hToreString();
-						}
-					}
+                    // HÃ¶chste Siege Gastmannschaft R?ckspiel (Team a)
+                    $winadiffa = ((int) $yPartie->gToreString() - (int) $yPartie->hToreString());
+                    if ($winadiffa > $highawina) {
+                        $highawina = $winadiffa;
+                        $template->setVariable('GastsiegA', $yPartie->gToreString() . ':' . $yPartie->hToreString());
+                        $highawinagoal = $yPartie->gToreString();
+                    } elseif ($winadiffa == $highawina) {
+                        if ($highawinagoal < $yPartie->gToreString()) {
+                            $template->setVariable('GastsiegA', $yPartie->gToreString() . ':' . $yPartie->hToreString());
+                            $highawinagoal = $yPartie->gToreString();
+                        }
+                    }
+                    // HÃ¶chste Siege Heimmannschaft R?ckspiel (Team b)
+                    $windiffb = ((int) $yPartie->hToreString() - (int) $yPartie->gToreString());
+                    if ($windiffb > $highwinb) {
+                        $highwinb = $windiffb;
+                        $template->setVariable('HeimsiegB', $yPartie->hToreString() . ':' . $yPartie->gToreString());
+                        $highwinbgoal = $yPartie->hToreString();
+                    } elseif ($windiffb == $highwinb) {
+                        if ($highwinbgoal < $yPartie->hToreString()) {
+                            $template->setVariable('HeimsiegB', $yPartie->hToreString() . ':' . $yPartie->gToreString());
+                            $highwinbgoal = $yPartie->hToreString();
+                        }
+                    }
                     $tlink = '&nbsp;';
                     if ($SpBer_link != '')
                         $tlink = "<a href='" . URL_TO_LMO_SHORT . $SpBer_link . "' target='_blank' title='" . $text['stats'][10] . ' (' . $text['stats'][11] . ")'><i class='material-icons text-danger'>launch</i></a>";
