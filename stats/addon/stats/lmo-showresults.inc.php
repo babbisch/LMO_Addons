@@ -7,8 +7,8 @@ if ($stats == 1) {
     echo '&amp;b=';
     echo strip_tags($teams[$teamb[$st - 1][$i]]);
     echo '&amp;c=' . $liga;
-    echo "','_blank','width=" . $stats_popup_breite . ',height=' . $stats_popup_hoehe . ",left=0,top=0')\" data-bs-toggle='tooltip' data-bs-placement='top' data-bs-title='" . nl2br($text['stats'][2]) . "'><i class='bi bi-clipboard-data text-danger' style='font-size: 1.3rem;'></i></a>";
+    echo "','_blank','width=" . $stats_popup_breite . ',height=' . $stats_popup_hoehe . ",left=0,top=0')\" data-bs-toggle='tooltip' data-bs-placement='right' data-bs-title='" . nl2br($text['stats'][2]) . "'><i class='bi bi-clipboard-data text-danger' style='font-size: 1.3rem;'></i></a>";
 } else {
-    echo "<img src='" . URL_TO_IMGDIR . "/blank.png' width='21' height='1' border='0' alt='' />";
+    echo ' ';
 }
 ?> 
