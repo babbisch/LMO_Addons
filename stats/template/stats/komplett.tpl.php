@@ -21,6 +21,21 @@
     <div class="col-2 text-center"><!--Icongbig--></div>
     <div class="col-3 text-start"><!--Teamb--></div>
   </div>
+  <div class="row">
+    <div class="col"><!--Team--></div>
+	<div class="col"><!--highHome--></div>
+	<div class="col"><!--highAway--></div>
+  </div>
+  <div class="row">
+    <div class="col"><!--Teamb--></div>
+	<div class="col"><!--HeimsiegB--></div>
+	<div class="col"><!--GastsiegB--></div>	
+  </div>
+  <div class="row">
+    <div class="col"><!--Teamb--></div>
+	<div class="col"><!--HeimsiegB--></div>
+	<div class="col"><!--GastsiegB--></div>
+  </div>
   <!-- BEGIN Liga -->
   <div class="row mb-2 mt-5">
     <div class="col text-center text-light bg-primary shadow"><strong><!--Liganame--></strong></div>
