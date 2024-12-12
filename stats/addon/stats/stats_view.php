@@ -169,7 +169,7 @@ for ($i = 1; $i <= 1; $i++) {
 $template->setVariable('Spiela', $spielastat);
 $template->setVariable('Spielb', $spielbstat);
 $template->setVariable('Tabelle', $tabstat);
-$template->setVariable('Team', $text['stats'][0]);
+$template->setVariable('Team', $text['stats'][21]);
 $template->setVariable('highHomew', $text['stats'][35]);
 $template->setVariable('highAway', $text['stats'][36]);
 for ($i = 1; $i <= $anzahl_ligen; $i++) {
@@ -179,8 +179,8 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
         echo '<font color="red">' . $text['stats'][12] . " ($fav_liga[$i])</font>";
     } else {
         $template->setCurrentBlock('Liga');
-        $template->setVariable('Teama', $a);
-        $template->setVariable('Teamb', $b);
+        $template->setVariable('TeamA', $a);
+        $template->setVariable('TeamB', $b);
         $template->setCurrentBlock('Inhalt');
         foreach ($akt_liga->partien as $yPartie) {
             if (($yPartie->heim->name == $a) and ($yPartie->gast->name == $b)) {

@@ -1,6 +1,6 @@
 <html>
 <head>
-<title><!--Teama--> vs. <!--Teamb--></title>
+<title><!--TeamA--> vs. <!--TeamB--></title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=0.5,user-scalable=yes" />
 <link rel="stylesheet" href="style.css" type="text/css" media="screen" />
@@ -15,11 +15,11 @@
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-3 text-end"><!--Teama--></div>
+    <div class="col-3 text-end"><!--TeamA--></div>
     <div class="col-2 text-center"><!--Iconhbig--></div>
     <div class="col-1 text-center"><!--Text2--></div>
     <div class="col-2 text-center"><!--Icongbig--></div>
-    <div class="col-3 text-start"><!--Teamb--></div>
+    <div class="col-3 text-start"><!--TeamB--></div>
   </div>
   <!-- BEGIN Liga -->
   <div class="row mb-2 mt-5">
@@ -42,7 +42,6 @@
 <!--StatistikShort-->
 <div class="container">
   <div class="row mt-5">
-    <div class="col-4"><!--Pdf--></div>
     <div class="col-8 text-end"><!--VERSION--><br><!--VERSIONa--><br><!--SPRACHE--><br><!--Dauer--></div>
   </div>
 </div>
