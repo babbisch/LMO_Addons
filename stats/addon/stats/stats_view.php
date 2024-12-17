@@ -132,13 +132,13 @@ for ($i = 1; $i <= 1; $i++) {
                             $Heima = $yPartie->heim->name;
                             $Gasta = $yPartie->gast->name;
                             $Torea = ($yPartie->hToreString() . ' : ' . $yPartie->gToreString());
-                            if ($Heim == $a) {
+                            if ($Heima == $a) {
                                 $spielastat .= "<div class='row' id='1'>\n";
                                 $spielastat .= "<div class='col-2 text-start'>" . $Datuma . "</div>\n";
                                 $spielastat .= "<div class='col-3'>" . $Gasta . ' ' . $text['stats'][27] . "</strong></div>\n";
                                 $spielastat .= "<div class='col-1'>" . $Torea . "</div>\n";
                                 $spielastat .= "</div>\n";
-                            } elseif ($Gast == $a) {
+                            } elseif ($Gasta == $a) {
                                 $spielastat .= "<div class='row'>\n";
                                 $spielastat .= "<div class='col-2 text-start'>" . $Datuma . "</div>\n";
                                 $spielastat .= "<div class='col-3'>" . $Heima . ' ' . $text['stats'][28] . "</div>\n";
