@@ -71,6 +71,7 @@ if ($createstats == true) {
         }
     }
     $verz2 = $verz;
+    rsort($verz2);
 
     $files = glob(PATH_TO_CONFIGDIR . '/stats/' . $archiv . '/*');
     foreach ($files as $file) {
