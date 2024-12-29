@@ -7,27 +7,13 @@ function getmicrotime()
 
 $mymulti = substr($multi, 0, strripos($multi, '/'));
 $time_start = getmicrotime();
-$aspiele = 0;
-$asieg = 0;
-$aunentschieden = 0;
-$aniederlage = 0;
-$aspieleh = 0;
-$asiegh = 0;
-$aunentschiedenh = 0;
-$aniederlageh = 0;
-$aspielea = 0;
-$asiega = 0;
-$aunentschiedena = 0;
-$aniederlagea = 0;
-$aptoreh = 0;
-$amtoreh = 0;
-$aptorea = 0;
-$amtoreh = 0;
-$amtorea = 0;
+$aspiele = $asieg = $aunentschieden = $aniederlage = 0;
+$aspieleh = $asiegh = $aunentschiedenh = $aniederlageh = 0;
+$aspielea = $asiega = $aunentschiedena = $aniederlagea = 0;
+$aptoreh = $amtoreh = $aptorea = $amtorea = 0;
 // $Spielm = $multi_cfgarray['spieltageminus'];
 // $Spielp = $multi_cfgarray['spieltageplus'];
-$Spielm = '';
-$Spielp = '';
+$Spielm = $Spielp = '';
 $tordummy = '';
 $highwina = 1;
 $highwinagoal = 0;
@@ -193,7 +179,7 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
         foreach ($akt_liga->partien as $yPartie) {
             if (($yPartie->heim->name == $a) and ($yPartie->gast->name == $b)) {
                 $template->setVariable('Datum', $yPartie->datumString($leer = '__.__.____'));
-                $template->setVariable('Uhr', $yPartie->zeitString($leer = '__:__ ') . ' Uhr');
+                $template->setVariable('Uhr', $yPartie->zeitString($leer = '__:__ ');
                 $template->setVariable('Liganame', $akt_liga->name);
                 $template->setVariable('Ligaicon', HTML_smallLigaIcon($akt_liga->options->keyValues['Icon'], "alt='' width='24'"));
                 $template->setVariable('Heim', $yPartie->heim->name);
@@ -243,15 +229,13 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                     $template->setVariable('Notiz', $ntext);
                 }
                 if ($yPartie->hToreString() > $yPartie->gToreString()) {
-                    $asiegh = $asiegh + 1;
+                    $asiegh += 1;
                 }
-                if ($yPartie->hToreString() == $yPartie->gToreString()) {
-                    if ($yPartie->hToreString() != $tordummy) {
-                        $aunentschiedenh = $aunentschiedenh + 1;
-                    }
+                if ($yPartie->hToreString() == $yPartie->gToreString() && $yPartie->hToreString() != $tordummy) {
+                    $aunentschiedenh += 1;
                 }
                 if ($yPartie->hToreString() < $yPartie->gToreString()) {
-                    $aniederlageh = $aniederlageh + 1;
+                    $aniederlageh += 1;
                 }
                 $aptoreh = $aptoreh + intval($yPartie->hToreString());
                 $amtoreh = $amtoreh + intval($yPartie->gToreString());
@@ -305,15 +289,13 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                         $template->setVariable('Notiz', $ntext);
                     }
                     if ($yPartie->hToreString() > $yPartie->gToreString()) {
-                        $aniederlagea = $aniederlagea + 1;
+                        $aniederlagea += 1;
                     }
-                    if ($yPartie->hToreString() == $yPartie->gToreString()) {
-                        if ($yPartie->hToreString() != $tordummy) {
-                            $aunentschiedena = $aunentschiedena + 1;
-                        }
+                    if ($yPartie->hToreString() == $yPartie->gToreString() && $yPartie->hToreString() != $tordummy) {
+                        $aunentschiedena += 1;
                     }
                     if ($yPartie->hToreString() < $yPartie->gToreString()) {
-                        $asiega = $asiega + 1;
+                        $asiega += 1;
                     }
                     $aptorea = $aptorea + intval($yPartie->gToreString());
                     $amtorea = $amtorea + intval($yPartie->hToreString());
