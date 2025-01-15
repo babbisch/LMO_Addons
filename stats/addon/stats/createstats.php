@@ -3,31 +3,12 @@
 require (__DIR__ . '/../../init.php');
 require_once (PATH_TO_ADDONDIR . '/classlib/ini.php');
 
-function scan($folder)
-{
-    /* eigene Funktion, get_dir() aus lmo-functions.php ruft sich nicht selbst auf */
-    global $out, $archiv;
-
-    if ($content = opendir($folder)) {
-        while (false !== ($file = readdir($content))) {
-            if (is_dir("$folder/$file") && $file != '.' && $file != '..') {
-                // scan("$folder/$file");
-            } elseif ($file != '.' && $file != '..') {
-                $verz = substr($folder, strrpos($folder, $archiv) + strlen($archiv), strlen($folder));
-                $out[] = "$verz/$file";
-            }
-        }
-        closedir($content);
-    }
-    return $out;
-}
-
 // Ligenarchiv
 $dir = dir(PATH_TO_LMO . '/' . $dirliga . '/archiv');
 $verzarch = '';
 while (false !== ($entry = $dir->read())) {
     if (is_dir(PATH_TO_LMO . '/' . $dirliga . '/archiv/' . $entry) && substr($entry, 0, 1) != '.')
-        $verzarch .= '<option>' . 'archiv/' . $entry . '</option>';
+        $verzarch .= '<option>' . 'archiv/' . $entry . '/</option>';
 }
 
 // Ligenarchiv
@@ -73,7 +54,7 @@ if ($createstats == false) {
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][203]; ?>:</div>
-        <div class="col-3 text-start"><select class="custom-select" style="width: 8rem;" name="archiv"><?php echo $verzarch ?></select></div>
+        <div class="col-3 text-start"><select class="custom-select" style="width: 15rem;" name="archiv"><?php echo $verzarch ?></select></div>
     </div>
     <div class="row">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][204]; ?>:</div>
@@ -111,8 +92,17 @@ if ($createstats == false) {
     fputs($stats, "[Viewer Ligen]\r\n");
     fputs($stats, 'liga' . $i . '=' . $liganame . ".l98\r\n");
 
-    $ligendir = scan(PATH_TO_LMO . '/' . $dirliga . $archiv);
+    $dir = PATH_TO_LMO . '/' . $dirliga . '/' . $archiv;
+    $scanned = array_diff(scandir($dir), array('..', '.'));
+    $ligendir = array();
+    foreach ($scanned as $scan) {
+        $pathinfo = pathinfo($scan);
+        if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'l98') {
+            $ligendir [] = $scan;
+        }
+    }    
 
+    var_dump($ligendir);
     if ($_POST['sortdirection'] == 'asc') {
         sort($ligendir);
     } else {
@@ -121,7 +111,6 @@ if ($createstats == false) {
 
     foreach ($ligendir as $ligadir) {
         $pathinfo = pathinfo(substr($ligadir, strrpos($ligadir, '/') + 1, strlen($ligadir)));
-        // if(preg_match('/^\d{4}$/',substr($pathinfo["filename"],0,4))) {
         if (isset($pathinfo['extension'])) {
             $extension = $pathinfo['extension'];
             if ($extension == 'l98') {
