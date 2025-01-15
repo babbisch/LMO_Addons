@@ -181,7 +181,6 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                 $template->setVariable('Datum', $yPartie->datumString($leer = '__.__.____'));
                 $template->setVariable('Uhr', $yPartie->zeitString($leer = '__:__ '));
                 $template->setVariable('Liganame', $akt_liga->name);
-                $template->setVariable('Ligaicon', HTML_smallLigaIcon($akt_liga->options->keyValues['Icon'], "alt='' width='24'"));
                 $template->setVariable('Heim', $yPartie->heim->name);
                 $template->setVariable('HeimMittel', $yPartie->heim->mittel);
                 $template->setVariable('HeimKurz', $yPartie->heim->kurz);
@@ -244,7 +243,6 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                     $template->setVariable('Datum', $yPartie->datumString($leer = '__.__.____'));
                     $template->setVariable('Uhr', $yPartie->zeitString($leer = '__:__ ') . ' Uhr');
                     $template->setVariable('Liganame', $akt_liga->name);
-                    $template->setVariable('Ligaicon', HTML_smallLigaIcon($akt_liga->options->keyValues['Icon'], "alt='' width='24'"));
                     $template->setVariable('Heim', $yPartie->heim->name);
                     $template->setVariable('HeimMittel', $yPartie->heim->mittel);
                     $template->setVariable('HeimKurz', $yPartie->heim->kurz);
