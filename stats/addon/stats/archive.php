@@ -88,7 +88,7 @@ if ($createstats == true) {
         fputs($stats, "template=standard\r\n");
         fputs($stats, "\r\n");
         fputs($stats, "[Viewer Ligen]\r\n");
-        fputs($stats, 'liga' . $i . '=' . $liganame . ".l98\r\n");
+        fputs($stats, 'liga' . $i . '=' . $archiv . '/' . $liganame . ".l98\r\n");
 
         // für alte Ligen keine aktuelleren für den Vergleich heranziehen
         foreach ($verz2 as $oldfiles) {
