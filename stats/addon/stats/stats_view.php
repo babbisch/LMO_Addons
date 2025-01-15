@@ -179,7 +179,7 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
         foreach ($akt_liga->partien as $yPartie) {
             if (($yPartie->heim->name == $a) and ($yPartie->gast->name == $b)) {
                 $template->setVariable('Datum', $yPartie->datumString($leer = '__.__.____'));
-                $template->setVariable('Uhr', $yPartie->zeitString($leer = '__:__ ');
+                $template->setVariable('Uhr', $yPartie->zeitString($leer = '__:__ '));
                 $template->setVariable('Liganame', $akt_liga->name);
                 $template->setVariable('Ligaicon', HTML_smallLigaIcon($akt_liga->options->keyValues['Icon'], "alt='' width='24'"));
                 $template->setVariable('Heim', $yPartie->heim->name);
