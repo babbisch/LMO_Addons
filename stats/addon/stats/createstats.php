@@ -50,7 +50,7 @@ if ($createstats == false) {
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][202]; ?>:</div>
-        <div class="col-3 text-start"><select class="custom-select" style="width: 8rem;" name="liganame"><?php echo $verz ?></select></div>
+        <div class="col-3 text-start"><select class="custom-select" style="width: 15rem;" name="liganame"><?php echo $verz ?></select></div>
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][203]; ?>:</div>
@@ -68,7 +68,7 @@ if ($createstats == false) {
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][208]; ?>:</div>
-        <div class="col-3 text-start"><select class="custom-select" style="width: 8rem;" name="template"><?php echo $templates ?></select></div>
+        <div class="col-3 text-start"><select class="custom-select" style="width: 15rem;" name="template"><?php echo $templates ?></select></div>
     </div>
     <div class="row pt-3">
         <div class="col">
