@@ -24,9 +24,9 @@ if (!defined('VERSION'))
 if (!defined('ADDON_NAME'))
     define('ADDON_NAME', 'TEAM-Vergleich');
 if (!defined('VERSIONA'))
-    define('VERSIONA', 'Copyright (C) 2004 by <a href=http://www.httipp.de.vu target=_blank>HT</a> & <a href=http://www.bwlangenberg.de target=_blank>Horten</a>');
+    define('VERSIONA', 'Copyright (C) 2004 by HT & <a href="http://www.bwlangenberg.de" target="_blank">Horten</a>');
 if (!defined('TEAM_VERGLEICH'))
     define('TEAM_VERGLEICH', ADDON_NAME . ' ' . VERSION . ' Addon für LMO 4');
 if (!defined('VERSlON'))
-    define('VERSlON', 'Copyright (C) 2004 by <c:alink:http://www.httipp.de.vu>HT</c:alink>');
+    define('VERSlON', 'Copyright (C) 2004 by HT');
 ?>
