@@ -87,7 +87,7 @@ if ($createstats == false) {
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][208]; ?>:</div>
-        <div class="col-3 text-start"><select class="custom-select" style="width: 5rem;" name="template"><?php echo $templates ?></select></div>
+        <div class="col-3 text-start"><select class="custom-select" style="width: 8rem;" name="template"><?php echo $templates ?></select></div>
     </div>
     <div class="row pt-3">
         <div class="col">
