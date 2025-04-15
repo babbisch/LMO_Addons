@@ -33,7 +33,7 @@ function add_saison(&$m_tabelle, $path, $l_file)
 {
     $l_tabelle = array();
     $handle = fopen($path . $l_file . '-tab.csv', 'rb');
-    while (($data = fgetcsv($handle, 1000, '|')) !== FALSE) {
+    while (($data = fgetcsv($handle, 1000, '|', '\"', '\\')) !== FALSE) {
         $l_tabelle[] = $data;
     }
     fclose($handle);
