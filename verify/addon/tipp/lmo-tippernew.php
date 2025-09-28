@@ -86,7 +86,7 @@ if ($newpage == 1) {
             $newpage = 0;
             echo getMessage($text['tipp'][67], TRUE);
         }
-        if (strpos($xtippernachname, ' ') != false || strpos($xtippervorname, ' ') > -1) {
+        if (str_contains($xtippernachname, ' ') || strpos($xtippervorname, ' ') > -1) {
             $newpage = 0;
             echo getMessage($text['tipp'][109], TRUE);
         }
