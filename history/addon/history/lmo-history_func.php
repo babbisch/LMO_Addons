@@ -55,10 +55,10 @@ function add_saison(&$m_tabelle, $path, $l_file)
                     $m_tabelle[$l_tabelle[$i][0]][10] = $l_tabelle[$i][10];
                 }
             }
-            if (strpos($l_tabelle[$i][10], 'M') !== FALSE) {
+            if (strp_contains($l_tabelle[$i][10], 'M')) {
                 $m_tabelle[$l_tabelle[$i][0]][13]++;
             }
-            if (strpos($l_tabelle[$i][10], 'A') !== FALSE) {
+            if (str_contains($l_tabelle[$i][10], 'A')) {
                 $m_tabelle[$l_tabelle[$i][0]][14]++;
             }
             $m_tabelle[$l_tabelle[$i][0]][15]++;
@@ -68,10 +68,10 @@ function add_saison(&$m_tabelle, $path, $l_file)
             $m_tabelle[$l_tabelle[$i][0]][13] = 0;
             $m_tabelle[$l_tabelle[$i][0]][14] = 0;
             $m_tabelle[$l_tabelle[$i][0]][15] = 1;
-            if (strpos($m_tabelle[$l_tabelle[$i][0]][10], 'M') !== FALSE) {
+            if (str_contains($m_tabelle[$l_tabelle[$i][0]][10], 'M')) {
                 $m_tabelle[$l_tabelle[$i][0]][13]++;
             }
-            if (strpos($m_tabelle[$l_tabelle[$i][0]][10], 'A') !== FALSE) {
+            if (str_contains($m_tabelle[$l_tabelle[$i][0]][10], 'A')) {
                 $m_tabelle[$l_tabelle[$i][0]][14]++;
             }
         }
@@ -342,7 +342,7 @@ function scan_folder($folder)
              */
             if (dir_exists($folder, PATH_TO_LMO . '/' . $diroutput)) {
                 // echo PATH_TO_LMO.'/'.$diroutput.$folder." exisitiert<br>";
-                if (strpos($dirlist[$iscan], '.l98') !== false) {
+                if (str_contains($dirlist[$iscan], '.l98')) {
                     if (is_file(PATH_TO_LMO . '/' . $diroutput . $folder . '/' . $dirlist[$iscan] . '-tab.csv')) {
                         // TODO schauen ob Daten upgedatet wurden und dann auch die Output-Dateien updaten.
                     } else {
