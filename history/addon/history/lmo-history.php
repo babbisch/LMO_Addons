@@ -229,7 +229,7 @@ if (file_exists(PATH_TO_LMO . '/' . $diroutput . $m_liga . '-tab.csv')) {
         $template->setVariable(array('Abstiege' => $m_tabelle[$j][13]));
         $template->setVariable(array('Saisons' => $m_tabelle[$j][14]));
         $style = '';
-        if (strpos($m_tabelle[$j][10], 'F') !== FALSE) {  // FavTeam
+        if (str_contains($m_tabelle[$j][10], 'F')) {  // FavTeam
             $style .= 'font-weight:bolder;';
             $template->setVariable(array('Style' => $style));
         }
