@@ -166,7 +166,7 @@ $template->setVariable('Tabelle', $tabstat);
 $template->setVariable('TeamA', $a);
 $template->setVariable('TeamB', $b);
 $template->setVariable('Team', $text['stats'][21]);
-$template->setVariable('highHomew', $text['stats'][35]);
+$template->setVariable('highHome', $text['stats'][35]);
 $template->setVariable('highAway', $text['stats'][36]);
 for ($i = 1; $i <= $anzahl_ligen; $i++) {
     $akt_liga = new liga();
