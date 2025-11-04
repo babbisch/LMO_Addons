@@ -33,10 +33,10 @@ include (PATH_TO_ADDONDIR."/history/lmo-history.php");
 Optional kann noch das zu nutzende Template mitgegeben werden
 #### HTML
 ```html
-his_template=mytemplate
+his_template=mytemplate;
 ```
 #### PHP
 ```php
-$his_template='mytemplate'
+$his_template='mytemplate';
 ```
 
