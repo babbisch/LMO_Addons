@@ -26,7 +26,7 @@ foreach ($scanned as $scan) {
 // Templates für Statistik-Addon lesen
 $dir = PATH_TO_TEMPLATEDIR . '/stats/';
 $scanned = array_diff(scandir($dir), array('..', '.'));
-$options = '';
+$options = $templates = '';
 
 foreach ($scanned as $scan) {
     $pathinfo = pathinfo($scan);
