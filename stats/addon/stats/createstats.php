@@ -3,36 +3,32 @@
 require (__DIR__ . '/../../init.php');
 require_once (PATH_TO_ADDONDIR . '/classlib/ini.php');
 
+$verz = $verzarch = $templates = '';
+
 // Ligenarchiv
 $dir = dir(PATH_TO_LMO . '/' . $dirliga . '/archiv');
-$verzarch = '';
 while (false !== ($entry = $dir->read())) {
     if (is_dir(PATH_TO_LMO . '/' . $dirliga . '/archiv/' . $entry) && substr($entry, 0, 1) != '.')
         $verzarch .= '<option>' . 'archiv/' . $entry . '/</option>';
 }
 
-// Ligenarchiv
-$dir = PATH_TO_LMO . '/' . $dirliga;
-$scanned = array_diff(scandir($dir), array('..', '.'));
-$verz = '';
-foreach ($scanned as $scan) {
-    $pathinfo = pathinfo($scan);
-    if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'l98') {
-        $file = $pathinfo['filename'];
-        $verz .= '<option>' . $file . '</option>';
+// Ligen
+$dir = dir(PATH_TO_LMO . '/' . $dirliga);
+while (false !== ($files = $dir->read())) {
+    if (is_file(PATH_TO_LMO . '/' . $dirliga . $files)) {
+    	$pathinfo = pathinfo(PATH_TO_LMO . '/' . $dirliga . $files);
+    	if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'l98')
+            $verz .= '<option>' . $pathinfo['filename'] . '</option>';
     }
 }
 
 // Templates für Statistik-Addon lesen
-$dir = PATH_TO_TEMPLATEDIR . '/stats/';
-$scanned = array_diff(scandir($dir), array('..', '.'));
-$options = $templates = '';
-
-foreach ($scanned as $scan) {
-    $pathinfo = pathinfo($scan);
-    if ($pathinfo['extension'] == 'php') {
-        $template = substr($pathinfo['filename'], 0, stripos($pathinfo['filename'], '.'));
-        $templates .= '<option>' . $template . '</option>';
+$dir = dir(PATH_TO_TEMPLATEDIR . '/stats/');
+while (false !== ($files = $dir->read())) {
+    if(is_file(PATH_TO_TEMPLATEDIR . '/stats/' . $files)) {
+        $pathinfo = pathinfo(PATH_TO_TEMPLATEDIR . '/stats/' . $files);
+        if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'php')
+            $templates .= '<option>' . substr($pathinfo['filename'], 0, stripos($pathinfo['filename'], '.')) . '</option>';
     }
 }
 
@@ -50,7 +46,7 @@ if ($createstats == false) {
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][202]; ?>:</div>
-        <div class="col-3 text-start"><select class="custom-select" style="width: 15rem;" name="liganame"><?php echo $verz ?></select></div>
+        <div class="col-3 text-start"><select class="custom-select" style="width: 8rem;" name="liganame"><?php echo $verz ?></select></div>
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][203]; ?>:</div>
@@ -68,7 +64,7 @@ if ($createstats == false) {
     </div>
     <div class="row align-items-center">
         <div class="col-2 offset-2 text-end align-self-center"><?php echo $text['stats'][208]; ?>:</div>
-        <div class="col-3 text-start"><select class="custom-select" style="width: 15rem;" name="template"><?php echo $templates ?></select></div>
+        <div class="col-3 text-start"><select class="custom-select" style="width: 8rem;" name="template"><?php echo $templates ?></select></div>
     </div>
     <div class="row pt-3">
         <div class="col">
@@ -97,12 +93,10 @@ if ($createstats == false) {
     $ligendir = array();
     foreach ($scanned as $scan) {
         $pathinfo = pathinfo($scan);
-        if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'l98') {
-            $ligendir [] = $scan;
-        }
-    }    
-
-    var_dump($ligendir);
+        if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'l98')
+            $ligendir[] = $scan;
+    }
+    
     if ($_POST['sortdirection'] == 'asc') {
         sort($ligendir);
     } else {
@@ -111,14 +105,10 @@ if ($createstats == false) {
 
     foreach ($ligendir as $ligadir) {
         $pathinfo = pathinfo(substr($ligadir, strrpos($ligadir, '/') + 1, strlen($ligadir)));
-        if (isset($pathinfo['extension'])) {
-            $extension = $pathinfo['extension'];
-            if ($extension == 'l98') {
-                $i++;
-                fputs($stats, 'liga' . $i . '=' . $archiv . $ligadir . "\r\n");
-            }
+        if (isset($pathinfo['extension']) && $pathinfo['extension'] == 'l98') {
+            $i++;
+            fputs($stats, 'liga' . $i . '=' . $archiv . $ligadir . "\r\n");
         }
-        // }
     }
     $createstats = false;
 ?>
