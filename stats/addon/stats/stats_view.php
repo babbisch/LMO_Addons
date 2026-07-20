@@ -13,8 +13,9 @@ $aspielea = $asiega = $aunentschiedena = $aniederlagea = 0;
 $aptoreh = $amtoreh = $aptorea = $amtorea = 0;
 // $Spielm = $multi_cfgarray['spieltageminus'];
 // $Spielp = $multi_cfgarray['spieltageplus'];
-$Spielm = $Spielp = '';
-$tordummy = '';
+$Spielm = '';
+$Spielp = '';
+$tordummy = '_';
 $highwina = 1;
 $highwinagoal = 0;
 $highwinb = 1;
@@ -102,7 +103,7 @@ for ($i = 1; $i <= 1; $i++) {
                 $tabstat .= "<div class='col-1'>$tabTableRow[pPkt]</div>\n";
                 $tabstat .= "</div>\n";
                 $sptest = $akt_liga->aktuellerSpieltag();
-                $aktueller_spieltag = $sptest->nr;
+                $aktueller_spieltag = $sptest;
                 $start = $aktueller_spieltag - intval($Spielm);
                 $ende = $aktueller_spieltag + intval($Spielp) - 1;
                 if ($ende < $akt_liga->spieltageCount()) {
@@ -114,12 +115,12 @@ for ($i = 1; $i <= 1; $i++) {
                     $akt_spieltag = $akt_liga->spieltagForNumber($spieltag);
                     foreach ($akt_spieltag->partien as $yPartie) {
                         if (($yPartie->heim->name == $a) or ($yPartie->gast->name == $a)) {
-                            $Datuma = $yPartie->datumString($leer = '__.__.____');
+                            $Datuma = $yPartie->datumString();
                             $Heima = $yPartie->heim->name;
                             $Gasta = $yPartie->gast->name;
                             $Torea = ($yPartie->hToreString() . ' : ' . $yPartie->gToreString());
                             if ($Heima == $a) {
-                                $spielastat .= "<div class='row' id='1'>\n";
+                                $spielastat .= "<div class='row'>\n";
                                 $spielastat .= "<div class='col-2 text-start'>" . $Datuma . "</div>\n";
                                 $spielastat .= "<div class='col-3'>" . $Gasta . ' ' . $text['stats'][27] . "</strong></div>\n";
                                 $spielastat .= "<div class='col-1'>" . $Torea . "</div>\n";
@@ -133,7 +134,7 @@ for ($i = 1; $i <= 1; $i++) {
                             }
                         }
                         if (($yPartie->heim->name == $b) or ($yPartie->gast->name == $b)) {
-                            $Datumb = $yPartie->datumString($leer = '__.__.____');
+                            $Datumb = $yPartie->datumString();
                             $Heimb = $yPartie->heim->name;
                             $Gastb = $yPartie->gast->name;
                             $Toreb = ($yPartie->hToreString() . ' : ' . $yPartie->gToreString());
@@ -178,8 +179,8 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
         $template->setCurrentBlock('Inhalt');
         foreach ($akt_liga->partien as $yPartie) {
             if (($yPartie->heim->name == $a) and ($yPartie->gast->name == $b)) {
-                $template->setVariable('Datum', $yPartie->datumString($leer = '__.__.____'));
-                $template->setVariable('Uhr', $yPartie->zeitString($leer = '__:__ '));
+                $template->setVariable('Datum', $yPartie->datumString());
+                $template->setVariable('Uhr', $yPartie->zeitString());
                 $template->setVariable('Liganame', $akt_liga->name);
                 $template->setVariable('Heim', $yPartie->heim->name);
                 $template->setVariable('HeimMittel', $yPartie->heim->mittel);
@@ -187,10 +188,10 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                 $template->setVariable('Gast', $yPartie->gast->name);
                 $template->setVariable('GastMittel', $yPartie->gast->mittel);
                 $template->setVariable('GastKurz', $yPartie->gast->kurz);
-                $template->setVariable('IconHeim', HTML_smallTeamIcon($yPartie->heim->name, "alt='$a' width='24'"));
-                $template->setVariable('IconHeimBig', HTML_bigTeamIcon($yPartie->heim->name, "alt='$a' width='48'"));
-                $template->setVariable('IconGast', HTML_smallTeamIcon($yPartie->gast->name, "alt='$b' width='24'"));
-                $template->setVariable('IconGastBig', HTML_bigTeamIcon($yPartie->gast->name, "alt='$b' width='48'"));
+                $template->setVariable('IconHeim', HTML_TeamIcon($yPartie->heim->name, "alt='$a' title='$a' width='24'"));
+                $template->setVariable('IconHeimBig', HTML_TeamIcon($yPartie->heim->name, "alt='$a' title='$a' width='48'"));
+                $template->setVariable('IconGast', HTML_TeamIcon($yPartie->gast->name, "alt='$b' title='$b' width='24'"));
+                $template->setVariable('IconGastBig', HTML_TeamIcon($yPartie->gast->name, "alt='$b' title='$b' width='48'"));
                 $template->setVariable('Tore', $yPartie->hToreString() . ' : ' . $yPartie->gToreString());
                 $template->setVariable('SpielEnde', $yPartie->spielEndeString($text));
                 $SpBer_link = $yPartie->reportUrl;
@@ -221,10 +222,10 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                 // Ende H?chste Siege Gastmannschaft Hinspiel
                 $tlink = '&nbsp;';
                 if ($SpBer_link != '')
-                    $tlink = "<a href='" . URL_TO_LMO_SHORT . $SpBer_link . "' target='_blank' title='" . $text['stats'][10] . ' (' . $text['stats'][11] . ")'><i class='material-icons text-danger'>launch</i></i></a>";
+                    $tlink = "<a href='" . URL_TO_LMO_SHORT . $SpBer_link . "' target='_blank' title='" . $text['stats'][10] . ' (' . $text['stats'][11] . ")'><i class='bi bi-journal text-success' style='font-size: 1.3rem;'></i></a>";
                 $template->setVariable('Spielbericht', $tlink);
                 if (chop($yPartie->notiz) != '') {
-                    $ntext = '<a class="info" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="' . $yPartie->notiz . '"><i class="material-icons text-info">report</i></a>';
+                    $ntext = '<a class="info" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="' . $yPartie->notiz . '"><i class="bi bi-info-square text-info"></i></a>';
                     $template->setVariable('Notiz', $ntext);
                 }
                 if ($yPartie->hToreString() > $yPartie->gToreString()) {
@@ -240,17 +241,17 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                 $amtoreh = $amtoreh + intval($yPartie->gToreString());
             } else {
                 if (($yPartie->heim->name == $b) and ($yPartie->gast->name == $a)) {
-                    $template->setVariable('Datum', $yPartie->datumString($leer = '__.__.____'));
-                    $template->setVariable('Uhr', $yPartie->zeitString($leer = '__:__ ') . ' Uhr');
+                    $template->setVariable('Datum', $yPartie->datumString());
+                    $template->setVariable('Uhr', $yPartie->zeitString());
                     $template->setVariable('Liganame', $akt_liga->name);
                     $template->setVariable('Heim', $yPartie->heim->name);
                     $template->setVariable('HeimMittel', $yPartie->heim->mittel);
                     $template->setVariable('HeimKurz', $yPartie->heim->kurz);
-                    $template->setVariable('IconHeim', HTML_smallTeamIcon($yPartie->heim->name, "alt='$a' width='24'"));
+                    $template->setVariable('IconHeim', HTML_TeamIcon($yPartie->heim->name, "alt='$a' title='$a' width='24'"));
                     $template->setVariable('Gast', $yPartie->gast->name);
                     $template->setVariable('GastMittel', $yPartie->gast->mittel);
                     $template->setVariable('GastKurz', $yPartie->gast->kurz);
-                    $template->setVariable('IconGast', HTML_smallTeamIcon($yPartie->gast->name, "alt='$b' width='24'"));
+                    $template->setVariable('IconGast', HTML_TeamIcon($yPartie->gast->name, "alt='$b' title='$b' width='24'"));
                     $template->setVariable('Tore', $yPartie->hToreString() . ' : ' . $yPartie->gToreString());
                     $template->setVariable('SpielEnde', $yPartie->spielEndeString($text));
                     $SpBer_link = $yPartie->reportUrl;
@@ -280,10 +281,10 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
                     }
                     $tlink = '&nbsp;';
                     if ($SpBer_link != '')
-                        $tlink = "<a href='" . URL_TO_LMO_SHORT . $SpBer_link . "' target='_blank' title='" . $text['stats'][10] . ' (' . $text['stats'][11] . ")'><i class='material-icons text-danger'>launch</i></a>";
+                        $tlink = "<a href='" . URL_TO_LMO_SHORT . $SpBer_link . "' target='_blank' title='" . $text['stats'][10] . ' (' . $text['stats'][11] . ")'><i class='bi bi-journal text-success' style='font-size: 1.3rem;'></i></a>";
                     $template->setVariable('Spielbericht', $tlink);
                     if (chop($yPartie->notiz) != '') {
-                        $ntext = '<a class="info" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="' . $yPartie->notiz . '"><i class="material-icons text-info">report</i></a>';
+                        $ntext = '<a class="info" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-title="' . $yPartie->notiz . '"><i class="bi bi-info-squares text-info"></i></a>';
                         $template->setVariable('Notiz', $ntext);
                     }
                     if ($yPartie->hToreString() > $yPartie->gToreString()) {
@@ -384,7 +385,6 @@ for ($i = 1; $i <= $anzahl_ligen; $i++) {
         $template->setVariable('Text1', $text['stats'][5]);
         $template->setVariable('Text2', $text['stats'][6]);
         $template->setVariable('VERSION', TEAM_VERGLEICH);
-        $template->setVariable('VERSIONa', VERSIONA);
     }
 }
 $time_end = getmicrotime();
